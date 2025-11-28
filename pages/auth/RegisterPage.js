@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, Image } from "react-native";
-import styles from "../../styles/styles"; // Adjust the path as needed
-import favicon from "../../assets/favicon.png";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  ImageBackground // Needed for the background image
+} from "react-native";
+// Import LinearGradient
+import { LinearGradient } from 'expo-linear-gradient';
+import styles from "../../styles/styles"; // Ensure this path is correct
 
 export default function RegisterPage({ navigation }) {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +22,6 @@ export default function RegisterPage({ navigation }) {
   const handleRegister = () => {};
 
   return (
-
     <View style={styles.container}>
       <Text style={styles.title}>Register</Text>
       <TextInput
@@ -53,7 +60,7 @@ export default function RegisterPage({ navigation }) {
       <View style={styles.roleField}>
         <Text style={{ fontSize: 16, color: "#333" }}>{role}</Text>
       </View>
-      <Button title="Register" onPress={() => navigation.navigate("Dashboard")} />
+      <Button title="Register" onPress={handleRegister} />
 
       <div style={styles.backButton} onClick={() => navigation.goBack()}>
         Back to Login

@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-
   container: {
     // This style is no longer the main container but kept for reference
     flex: 1,
@@ -27,24 +26,12 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
-  card: {
-    backgroundColor: "#f8f9fa",
-    padding: 16,
-    paddingBottom: 32,
-    paddingTop: 32,
-    width: 350,
-    borderRadius: 8,
-    marginTop: 32,
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 30,
     textAlign: "center",
   },
-  
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
