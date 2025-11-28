@@ -1,27 +1,36 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  ImageBackground,
-} from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import React, { useState, useEffect } from "react";
+import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
 import styles from "../../styles/styles";
+import axios from "axios";
 
 export default function LoginPage({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false); // Checkbox state
+  const [rememberMe, setRememberMe] = useState(false);
+  const [data, setData] = useState([]);
 
-  // State for press/hover effects
-  const [isButtonPressed, setIsButtonPressed] = useState(false);
-  const [isLinkPressed, setIsLinkPressed] = useState(false);
-
-  const handleLogin = () => {
-    // Dummy login action
-    alert(`Email: ${email}\nPassword: ${password}\nRemember Me: ${rememberMe}`);
-  };
+  const handleLogin = async () => {
+    try {
+            const response = await axios.post("http://127.0.0.1:8000/auth/token/login/", {
+              email: email,
+              password: password
+            })
+            setData(response.data)
+  
+              localStorage.setItem('authToken', response.data.auth_token);
+              localStorage.setItem("role", response.data.role);
+              localStorage.setItem("user_id", response.data.user_id);
+              localStorage.setItem("email", response.data.email);
+            
+            
+            
+            navigation.navigate("Dashboard");
+            
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+  
 
   return (
     <ImageBackground
